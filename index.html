@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de memes</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- dom to image -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js" integrity="sha512-01CJ9/g7e8cUmY0DFTMcUw/ikS799FHiOA0eyHsUWfOetgbx/t6oV4otQ5zXKQyIrQGTHSmRVPIgrgLcZi/WMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- file saver -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js" integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+<body>
+    <!-- Empieza el header -->
+    <header>
+        <h1 class="main-title">Generador de memes</h1>
+
+        <div class="buttons-container">
+            <button class="button">
+                <i class='bx bxs-file-image'> Imagen</i>
+            </button>
+
+            
+            <button class="button">
+                <i class='bx bx-text'> Texto</i>
+            </button>
+
+
+            <button class="button">
+                <i class='bx bx-bulb'> Modo oscuro</i>
+            </button>
+
+
+            <!-- <button class="button">
+                <i class='bx bxs-bulb'> Modo claro</i>
+            </button> -->
+
+        </div>
+    </header>
+    <!-- Termina el header -->
+
+
+    <!-- Empieza seccion editor de meme -->
+    <main class="meme-editing-container">
+        <div class="meme-box" id="meme-box">
+
+            <section class="box-text">
+                <p class="meme-text">TOP TEXT</p>
+            </section>
+
+            <section class="black-box-meme"></section>
+
+            <section class="box-text">
+                <p class="meme-text">BOTTOM TEXT</p>
+            </section>
+        
+        </div>
+
+        <button class="download-button" id="download-button"> 
+            <i class='bx bxs-download'> Descargar meme</i>
+        </button>
+    </main>
+    
+
+<script src="app.js" ></script>
+</body>
+</html>
