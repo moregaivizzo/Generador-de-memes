@@ -1,3 +1,4 @@
+// DARK AND LIGHT THEME
 const inicializarTemas = () => {
     document.getElementById('dark-mode-button').addEventListener('click', cambiarModoClaro)
     document.getElementById('light-mode-button').addEventListener('click', cambiarModoOscuro)
@@ -18,6 +19,8 @@ const inicializarTemas = () => {
     inicializarPaneles()
     }
 
+
+    // HIDDEN PANELS
     const inicializarPaneles = () => {
         document.getElementById('button-img').addEventListener('click', () => {
           mostrarPanelImagen()
@@ -44,7 +47,18 @@ const inicializarTemas = () => {
         document.getElementById('image-editor-container').classList.remove('oculto')
       }
 
-    window.onload = inicializar
+    window.onload = inicializar 
+
+
+
+
+  //IMAGE PANEL - URL
+  const imageMeme = document.getElementById('meme-image');
+  const imageUrl = document.getElementById('image-url');
+
+  imageUrl.addEventListener('keyup', () => {
+    imageMeme.style.backgroundImage = `url(${imageUrl.value.trim()})`;
+  })
 
 
 
@@ -52,6 +66,29 @@ const inicializarTemas = () => {
 
 
 
+
+
+
+
+
+    // BOTON CERRAR
+    const buttonCloseImg = document.getElementById('button-close-editing-colum');
+    buttonCloseImg.addEventListener('click', function() {
+      buttonCloseImg
+      .parentElement
+      .parentElement
+      .classList
+      .toggle('hidden');
+    });
+
+    const buttonCloseTxt = document.getElementById('button-close-editing-colum');
+    buttonCloseTxt.addEventListener('click', function() {
+      buttonCloseTxt
+      .parentElement
+      .parentElement
+      .classList
+      .toggle('hidden');
+    })
 
 
 

@@ -93,9 +93,6 @@ label {
     font-size: 0.9rem;
 }
 
-textarea {
-    resize: none;
-}
 
 input,
 button,
@@ -204,11 +201,6 @@ select {
     align-items: center;
   }
 
-label {
-    display: block;
-    font-size: 12px;
-    color: var(--color-text);
-  }
 
 .default-button:hover, .button-button:focus {
     background-color: var(--color-button-default-hover);
@@ -265,15 +257,13 @@ label {
     text-align: center;
 }
 
-/* .button-close {
+.button-close-editing-column {
     font-size: 1.2rem;
-    background-color: #30343F;
-    color: #FFFFFF;
-    top: 16px;
-    right: 32px;
+    display: flex;
+    justify-content: flex-end;
     cursor: pointer;
     border: none;
-}  */
+} 
 
 .editing-control {
     display: flex;
@@ -369,14 +359,6 @@ label {
     letter-spacing: -1px;
 }
 
-#box-text-top {
-    top: 0;
-}
-
-#box-text-bottom {
-    bottom: 0;
-}
-
 .meme-text {
     width: 100%;
     background: white;
@@ -384,8 +366,8 @@ label {
     text-align: center;
     padding: 35px 50px;
     font-size: 40px;
-    font-weight: 800;
-    font-family: Verdana;
+    font-weight: bolder;
+    font-family: Impact;
     
 }
 
@@ -422,7 +404,6 @@ label {
 
 
 
-
 .buttons-alignment {
     width: calc(50% - 2.5px);
     justify-content: space-between;
@@ -436,24 +417,25 @@ label {
 }
 
 
-
 /* --------------------medias querys----------------------- */
 
 @media (min-width: 1300px) {
-    .image-editor-container {
-      display: block;
-      box-shadow: none;
-    }
-    .button-close-editing-column {
-      display: none;
-    }
+  .image-editor-container {
+    display: block;
+    box-shadow: none;
   }
-  
+  .button-close-editing-column {
+    display: none;
+  }
+}
+
 @media (max-width: 700px) {
-    .main-title {
-      font-size: 26px;
-    }
-    .image-editor-container {
-      width: 100%;
-    }
+  .main-title {
+    font-size: 26px;
   }
+  .image-editor-container {
+    width: 100%;
+  }
+}
+
+
