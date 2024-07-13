@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generador de memes</title>
+    <title>Editor de memes</title>
     <link rel="stylesheet" href="style.css">
     <!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -13,30 +13,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js" integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </head>
-<body>
+<body class="dark-theme">
     <!-- Empieza el header -->
     <header>
         <h1 class="main-title">Generador de memes</h1>
 
-        <div class="buttons-container">
-            <button class="button">
-                <i class='bx bxs-file-image'> Imagen</i>
+        <div class="buttons-container panel-buttons">
+            <button class="button button-text" id="button-img">
+                <i class='bx bxs-file-image text-button-icon'> Imagen</i>
             </button>
-
             
-            <button class="button">
-                <i class='bx bx-text'> Texto</i>
+            <button class="button button-text" id="button-text">
+                <i class='bx bx-text text-button-icon'> Texto</i>
             </button>
 
-
-            <button class="button">
-                <i class='bx bx-bulb'> Modo oscuro</i>
+            <button class="button button-text button-theme button-theme-dark" id="dark-mode-button">
+                <i class='bx bx-bulb text-button-icon'> Modo oscuro</i>
             </button>
 
-
-            <!-- <button class="button">
-                <i class='bx bxs-bulb'> Modo claro</i>
-            </button> -->
+            <button class="button button-text button-theme button-theme-light" id="light-mode-button">
+                <i class='bx bxs-bulb text-button-icon'> Modo claro</i>
+            </button>
 
         </div>
     </header>
@@ -46,25 +43,273 @@
     <!-- Empieza seccion editor de meme -->
     <main class="meme-editing-container">
         <div class="meme-box" id="meme-box">
+            <p id="box-text-top" class="meme-text">TOP TEXT</p>
+            
+            <div id="meme-image"></div>
 
-            <section class="box-text">
-                <p class="meme-text">TOP TEXT</p>
-            </section>
-
-            <section class="black-box-meme"></section>
-
-            <section class="box-text">
-                <p class="meme-text">BOTTOM TEXT</p>
-            </section>
+            <p id="box-text-bottom" class="meme-text">BOTTOM TEXT</p>
         
         </div>
 
-        <button class="download-button" id="download-button"> 
+        <button class="button button-text" id="download-button"> 
             <i class='bx bxs-download'> Descargar meme</i>
         </button>
     </main>
     
+    <!-- Seccion aside -->
+<aside class="image-editor-container oculto" id="image-editor-container">
 
-<script src="app.js" ></script>
+    <button class="button-close-editing-column" id="button-close-editing-colum"> 
+        <i class='bx bx-x button-close'></i>
+    </button>
+
+    <section class="image-panel-section" id="image-panel-section">
+
+    <!-- IMAGEN PANEL -->
+        <h2 class="panel-title">IMAGEN</h2>
+        <div class="panel-control">
+            <h3 class="panel-control-title">URL</h3>
+            <input type="text" class="panel-control-input" name="url" id="image-url"> </input>
+        </div>
+      
+
+    <!-- FONDO PANEL  -->
+
+    <div class="panel-control"> 
+        <h3 class="panel-title">FONDO</h3>
+
+        <div class="control-columns-container"> 
+            <div class="edit-control-color control-column">
+            <input type="color" name="color" id="image-background-color" value="#FFFFFF">
+            <span id="blend-mode-color">#FFFFFF</span>
+            </div>
+
+        <!-- <div class="control-column"> -->
+            <div class="control-column">
+                <select name="select" class="select-option" id="select-option">
+                    <option value="value1">Ninguno</option>
+                    <option value="value2">Aclarar</option>
+                    <option value="value3">Oscurecer</option>
+                    <option value="value4">Diferencia</option>
+                    <option value="value5">Luminosidad</option>
+                    <option value="value6">Multiplicar</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+    <!-- </div> -->
+
+    <!-- FILTROS -->
+    <div class="panel-control"> 
+    <h3 class="panel-title">FILTROS</h3>
+    <label for="range"> BRILLO
+        <input type="range" name="range" id="slider-brightness"
+        min="0"
+        max="1"
+        step="0.1"
+        value="1"
+    >
+    </label>
+
+    <label for="range"> OPACIDAD
+        <input type="range" name="range" id="slider-opacity"
+        min="0"
+        max="1"
+        step="0.1"
+        value="1"
+    >
+    </label>
+
+    <label for="range"> CONTRASTE
+        <input type="range" name="range" id="slider-contrast"
+        min="100"
+        max="1000"
+        step="1"
+        value="100"
+    >
+    </label>
+
+    <label for="range"> DESENFOQUE
+        <input type="range" name="range" id="slider-blur"
+        min="0"
+        max="10"
+        step="0.1"
+        value="0"
+    >
+    </label>
+
+    <label for="range"> ESCALA DE GRISES
+        <input type="range" name="range" id="slider-grayscale"
+        min="0%"
+        max="100"
+        step="1"
+        value="0"
+    >
+    </label>
+
+    <label for="range"> SEPIA
+        <input type="range" name="range" id="slider-sepia"
+        min="0"
+        max="100"
+        step="1"
+        value="0"
+    >
+    </label>
+
+    <label for="range"> HUE
+        <input type="range" name="range" id="slider-hue-rotation"
+        min="0"
+        max="359"
+        step="1"
+        value="0"
+    >
+    </label>
+
+    <label for="range"> SATURADO
+        <input type="range" name="range" id="slider-saturation"
+        min="100"
+        max="1000"
+        step="10"
+        value="100"
+    >
+    </label>
+
+    <label for="range"> NEGATIVO
+        <input type="range" name="range" id="slider-invert"
+        min="0"
+        max="1"
+        step="0.1"
+        value="0"
+    >
+    </label>
+    </div>
+
+    <button class="button default-button" id="reset-filters-button"> Restablecer filtros </button>
+    </section>
+
+
+    <!-- TEXT PANEL -->
+    <section class="text-editor-cantainer oculto" id="text-editor-cantainer">
+        <h2 class="panel-title">TEXTO</h2>
+
+        <div class="panel-control">
+            <h3 class="panel-control-title">SUPERIOR</h3>
+            <textarea aria-label="TOP TEXT" class="panel-control-input" name="top-text" id="top-text-input">TOP TEXT</textarea>
+            <div class="flex-container editing-control-checkbox">
+                <input type="checkbox" id="no-top-text-checkbox"><label for="no-top-text-checkbox"> Sin texto superior</label>
+            </div>
+        </div>
+
+
+
+    <div class="panel-control">
+        <h3 class="panel-control-title">INFERIOR</h3>
+        <textarea class="panel-control-input" name="bottom-text-input" id="bottom-text-input">BOTTOM-TEXT</textarea>
+        <div class="flex-container editing-control-checkbox">
+            <input type="checkbox" id="no-bottom-text-checkbox"> <label for="no-bottom-text-checkbox">Sin texto inferior</label>
+        </div>
+    </div>
+
+    <div class="panel-control">
+        <h3 class="panel-control-title">FUENTE</h3>
+        <select name="font family" id="select-font" class="panel-control-input">
+            <option value="Arial">Arial</option>
+            <option value="Arial Black">Arial Black</option>
+            <option value="American Typewriter">American Typewriter</option>
+            <option value="Andale Mono">Andale Mono</option>
+            <option value="Comic Sans MS"></option>
+            <option value="Helvetica">Helvetica</option>
+            <option value="Impact" selected>Impact</option>
+            <option value="Verdana">Verdana</option>
+            <option value="Times New Roman">Times New Roman</option>
+        </select>
+
+        <div class="flex-container">
+            <input type="number" name="font size" class="panel-control-input" id="text-size-input" 
+            min="12"
+            max="72"
+            value="40">
+
+        <div class="buttons-container buttons-alignment">
+            <button class="button default-button" id="left-align-button"> 
+            <i class='bx bx-align-left' id="left-align-icon"></i>
+            </button>
+
+            <button class="button default-button" id="center-align-button">
+                <i class='bx bx-align-middle' id="center-align-icon"></i>
+            </button>
+
+            <button class="button default-button" id="right-align-button">
+                <i class='bx bx-align-right' id="right-align-icon" ></i>
+            </button>
+        </div>
+        </div>
+    </div>
+
+    <div class="panel-control">
+        
+
+        <div class="control-columns-container"> 
+            <div class="panel-control control-column">
+                <h3 class="panel-control-title">COLOR</h3>
+                <div class="edit-control-color">
+                    <input type="color" name="color" id="image-background-color" value="#000000">
+                    <span id="text-color">#000000</span>
+                </div>
+    
+            </div>
+
+            <div class="panel-control control-column">
+                <h3 class="panel-control-title">FONDO</h3>
+                <div class="edit-control-color">
+                    <input type="color" name="color" id="image-background-color" value="#FFFFFF">
+                    <span id="background-color">#FFFFFF</span>
+                </div>
+    
+            </div>
+
+        </div>
+
+
+
+        <div class="flex-container editing-control-checkbox">
+            <input type="checkbox" id="transparent-text-background"><label for="transparent-text-background">Fondo transparente</label>
+        </div>
+    </div>
+
+    <div class="panel-control">
+        <h3 class="panel-control-title">CONTORNO</h3>
+        <div class="buttons-container">
+            <button class="button default-button" id="no-outline-button">Ninguno</button>
+            <button class="button default-button" id="light-outline-button">Claro</button>
+            <button class="button default-button" id="dark-outline-button">Oscuro</button>
+        </div>
+    </div>
+
+    <div class="panel-control">
+        <h3 class="panel-control-title">ESPACIADO</h3>
+        <input type="number" id="input-padding" class="panel-control-input" 
+        min="10"
+        max="50"
+        value="35">
+    </div>
+
+    <div class="panel-control">
+        <h3 class="panel-control-title">INTERLINEADO</h3>
+        <select name="line-height" id="line-height-input" class="panel-control-input">
+            <option value="0.8">0.8</option>
+            <option value="1">1</option>
+            <option value="1.2" selected>1.2</option>
+            <option value="1.5">1.5</option>
+            <option value="2.5">2.5</option>
+            <option value="2.5">2.5</option>
+        </select>
+    </div>
+
+    </section>
+</aside>
+
+<script src="main.js"></script>
 </body>
 </html>
