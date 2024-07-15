@@ -14,7 +14,9 @@
 
 </head>
 <body class="dark-theme">
-    <!-- Empieza el header -->
+
+
+    <!-- START OF HEADER -->
     <header>
         <h1 class="main-title">Generador de memes</h1>
 
@@ -37,15 +39,15 @@
 
         </div>
     </header>
-    <!-- Termina el header -->
+    <!-- END OF HEADER -->
 
 
-    <!-- Empieza seccion editor de meme -->
+    <!-- MEME EDITOR STRUCTURE -->
     <main class="meme-editing-container">
         <div class="meme-box" id="meme-box">
             <p id="box-text-top" class="meme-text">TOP TEXT</p>
             
-            <div id="meme-image"></div>
+            <div id="image-meme"></div>
 
             <p id="box-text-bottom" class="meme-text">BOTTOM TEXT</p>
         
@@ -56,7 +58,8 @@
         </button>
     </main>
     
-    <!-- Seccion aside -->
+
+    <!-- ASIDE SECTION -->
 <aside class="image-editor-container oculto" id="image-editor-container">
 
     <button class="button-close-editing-column" id="button-close-editing-colum"> 
@@ -65,26 +68,26 @@
 
     <section class="image-panel-section" id="image-panel-section">
 
-    <!-- IMAGEN PANEL -->
+
+    <!-- IMAGE PANEL -->
         <h2 class="panel-title">IMAGEN</h2>
         <div class="panel-control">
             <h3 class="panel-control-title">URL</h3>
             <input type="text" class="panel-control-input" name="url" id="image-url"> </input>
         </div>
-      
 
-    <!-- FONDO PANEL  -->
 
+    <!-- IMAGE PANEL - BACKGROUND  -->
     <div class="panel-control"> 
         <h3 class="panel-title">FONDO</h3>
 
         <div class="control-columns-container"> 
             <div class="edit-control-color control-column">
-            <input type="color" name="color" id="image-background-color" value="#FFFFFF">
+            <input type="color" name="color" id="image-mode-color" value="#FFFFFF">
             <span id="blend-mode-color">#FFFFFF</span>
             </div>
 
-        <!-- <div class="control-column"> -->
+
             <div class="control-column">
                 <select name="select" class="select-option" id="select-option">
                     <option value="value1">Ninguno</option>
@@ -100,7 +103,8 @@
     </div>
     <!-- </div> -->
 
-    <!-- FILTROS -->
+
+    <!-- IMAGE PANEL - FILTERS -->
     <div class="panel-control"> 
     <h3 class="panel-title">FILTROS</h3>
     <label for="range"> BRILLO
@@ -189,7 +193,7 @@
     </section>
 
 
-    <!-- TEXT PANEL -->
+    <!-- TEXT PANEL - TOP TEXT -->
     <section class="text-editor-cantainer oculto" id="text-editor-cantainer">
         <h2 class="panel-title">TEXTO</h2>
 
@@ -202,7 +206,7 @@
         </div>
 
 
-
+    <!-- TEXT PANEL - BOTTOM TEXT -->
     <div class="panel-control">
         <h3 class="panel-control-title">INFERIOR</h3>
         <textarea class="panel-control-input" name="bottom-text-input" id="bottom-text-input">BOTTOM-TEXT</textarea>
@@ -211,6 +215,8 @@
         </div>
     </div>
 
+
+    <!-- TEXT PANEL -  FONT FAMILY -->
     <div class="panel-control">
         <h3 class="panel-control-title">FUENTE</h3>
         <select name="font family" id="select-font" class="panel-control-input">
@@ -218,19 +224,23 @@
             <option value="Arial Black">Arial Black</option>
             <option value="American Typewriter">American Typewriter</option>
             <option value="Andale Mono">Andale Mono</option>
-            <option value="Comic Sans MS"></option>
+            <option value="Comic Sans MS">Comic Sans MS</option>
             <option value="Helvetica">Helvetica</option>
             <option value="Impact" selected>Impact</option>
             <option value="Verdana">Verdana</option>
             <option value="Times New Roman">Times New Roman</option>
         </select>
 
+
+        <!-- TEXT PANEL - FONT SIZE -->
         <div class="flex-container">
             <input type="number" name="font size" class="panel-control-input" id="text-size-input" 
             min="12"
             max="72"
             value="40">
 
+
+        <!-- TEXT PANEL - TEXT ALIGN -->
         <div class="buttons-container buttons-alignment">
             <button class="button default-button" id="left-align-button"> 
             <i class='bx bx-align-left' id="left-align-icon"></i>
@@ -247,19 +257,21 @@
         </div>
     </div>
 
-    <div class="panel-control">
-        
 
+    <!-- TEXT PANEL - TEXT COLOR -->
+    <div class="panel-control">
         <div class="control-columns-container"> 
             <div class="panel-control control-column">
                 <h3 class="panel-control-title">COLOR</h3>
                 <div class="edit-control-color">
-                    <input type="color" name="color" id="image-background-color" value="#000000">
+                    <input type="color" name="color" id="text-color-input" value="#000000">
                     <span id="text-color">#000000</span>
                 </div>
     
             </div>
 
+
+            <!-- TEXT PANEL - TEXT BACKGROUND COLOR -->
             <div class="panel-control control-column">
                 <h3 class="panel-control-title">FONDO</h3>
                 <div class="edit-control-color">
@@ -271,13 +283,13 @@
 
         </div>
 
-
-
         <div class="flex-container editing-control-checkbox">
             <input type="checkbox" id="transparent-text-background"><label for="transparent-text-background">Fondo transparente</label>
         </div>
     </div>
 
+
+    <!-- //TEXT PANEL - OUTLINE -->
     <div class="panel-control">
         <h3 class="panel-control-title">CONTORNO</h3>
         <div class="buttons-container">
@@ -287,6 +299,8 @@
         </div>
     </div>
 
+
+    <!-- TEXT PANEL - PADDING -->
     <div class="panel-control">
         <h3 class="panel-control-title">ESPACIADO</h3>
         <input type="number" id="input-padding" class="panel-control-input" 
@@ -295,6 +309,8 @@
         value="35">
     </div>
 
+
+    <!-- TEXT PANEL - LINE HEIGHT -->
     <div class="panel-control">
         <h3 class="panel-control-title">INTERLINEADO</h3>
         <select name="line-height" id="line-height-input" class="panel-control-input">

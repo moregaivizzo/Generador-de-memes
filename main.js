@@ -20,7 +20,23 @@ const inicializarTemas = () => {
     }
 
 
-    // HIDDEN PANELS
+    // DOWLAND BUTTON
+const downloadButton = document.getElementById('download-button');
+const memeBox = document.getElementById('meme-box');
+
+function downloadMeme () {
+    console.log(domtoimage);
+    domtoimage.toBlob(memeBox).then(function (blob) {
+        saveAs(blob, 'my-meme.png');
+    }
+    )
+
+}
+
+downloadButton.addEventListener('click', downloadMeme);
+
+
+    // // HIDDEN PANELS
     const inicializarPaneles = () => {
         document.getElementById('button-img').addEventListener('click', () => {
           mostrarPanelImagen()
@@ -47,73 +63,299 @@ const inicializarTemas = () => {
         document.getElementById('image-editor-container').classList.remove('oculto')
       }
 
+      const ocultarPanel = () => {
+        document.getElementById('image-editor-container').classList.add('oculto')
+      }
+
     window.onload = inicializar 
 
 
+    // CLOSE PANEL BUTTON 
+    const botonCerrarImg = document.getElementById("button-close-editing-colum");
+    botonCerrarImg.addEventListener("click", function(){
+        botonCerrarImg
+            .parentElement
+            .parentElement
+            .classList
+            .toggle("hidden");
+    });
+    
+    
+    const botonCerrarTxt = document.getElementById("button-close-editing-colum");
+    botonCerrarTxt.addEventListener("click", function(){
+        botonCerrarTxt
+            .parentElement
+            .parentElement
+            .classList
+            .toggle("hidden");
+    });
 
 
-  //IMAGE PANEL - URL
-  const imageMeme = document.getElementById('meme-image');
+
+
+    //IMAGE PANEL - URL
+
+  const imageMeme = document.getElementById('image-meme');
   const imageUrl = document.getElementById('image-url');
 
   imageUrl.addEventListener('keyup', () => {
     imageMeme.style.backgroundImage = `url(${imageUrl.value.trim()})`;
   })
 
+  
+
+    //IMAGE PANEL - BACKGROUND
+
+  const blendModeSelector = document.getElementById('select-option');
+  const blendModeColor = document.getElementById('blend-mode-color');
+  const blendModeColorInput = document.getElementById('image-mode-color');
+
+  blendModeSelector.addEventListener('change', (e) => {
+  imageMeme.style.backgroundBlendMode = e.target.value;
+});
+
+blendModeColorInput.addEventListener('input', () => {
+    const valueBgImage = blendModeColorInput.value;
+    imageMeme.style.backgroundColor = valueBgImage;
+    blendModeColor.innerHTML = valueBgImage.toUpperCase();
+});
+
+
+// IMAGE PANEL FILTERS
+
+const brightness = document.getElementById ('slider-brightness');
+const opacity = document.getElementById ('slider-opacity');
+const contrast = document.getElementById ('slider-contrast');
+const blurSlider = document.getElementById ('slider-blur');
+const grayscale = document.getElementById ('slider-grayscale');
+const sepia = document.getElementById ('slider-sepia');
+const hue = document.getElementById ('slider-hue-rotation');
+const saturate = document.getElementById ('slider-saturation');
+const invert = document.getElementById ('slider-invert');
+
+brightness.addEventListener('change', applyFilters)
+opacity.addEventListener('change', applyFilters)
+contrast.addEventListener('change', applyFilters)
+blurSlider.addEventListener('change', applyFilters)
+grayscale.addEventListener('change', applyFilters)
+sepia.addEventListener('change', applyFilters)
+hue.addEventListener('change', applyFilters)
+saturate.addEventListener('change', applyFilters)
+invert.addEventListener('change', applyFilters)
+
+function applyFilters () {
+  imageMeme.style.filter = `brightness(${brightness.value}) 
+  opacity(${opacity.value}) 
+  blur(${blurSlider.value}px) 
+  contrast(${contrast.value}%)
+  grayscale(${grayscale.value}%) 
+  sepia(${sepia.value}%) 
+  hue-rotate(${hue.value}deg) 
+  saturate(${saturate.value}%) 
+  invert(${invert.value})`;
+};
+
+
+// BUTTON RESET FILTERS
+
+const resetFilters = () => {
+  brightness.value = 1
+  opacity.value = 1
+  contrast.value = 100
+  blurSlider.value = 0
+  grayscale.value = 0
+  sepia.value = 0
+  hue.value = 0
+  saturate.value = 100
+  invert.value = 0
+
+  applyFilters ()
+}
+
+const resetFiltersBtn = document.getElementById('reset-filters-button');
+resetFiltersBtn.addEventListener('click', resetFilters);
 
 
 
+//TEXT PANEL - TOP TEXT
+const topText = document.getElementById('box-text-top');
+const topTextInput = document.getElementById('top-text-input');
+const topTextCheckbox = document.getElementById('no-top-text-checkbox');
+
+topTextInput.addEventListener('click', (e) => {
+  e.target.value = '';
+})
+
+topTextInput.addEventListener('keyup', () => {
+  topText.innerHTML = topTextInput.value;
+})
+
+topTextCheckbox.addEventListener('click', () => {
+  if (topTextCheckbox.checked) {
+    topText.innerHTML = '';
+  } else if (!topTextCheckbox.checked) {
+    topText.innerHTML = topTextInput.value;
+  }
+})
 
 
+//TEXT PANEL - BOTTOM TEXT
+const bottomText = document.getElementById('box-text-bottom');
+const bottomTextInput = document.getElementById('bottom-text-input');
+const bottomTextCheckbox = document.getElementById('no-bottom-text-checkbox');
+
+bottomTextInput.addEventListener('click', (e) => {
+  e.target.value = '';
+})
+
+bottomTextInput.addEventListener('keyup', () => {
+  bottomText.innerHTML = bottomTextInput.value;
+})
+
+bottomTextCheckbox.addEventListener('click', () => {
+  if (bottomTextCheckbox.checked) {
+    bottomText.innerHTML = '';
+  } else if (!bottomTextCheckbox.checked) {
+    bottomText.innerHTML = bottomTextInput.value;
+  }
+})
 
 
+// TEXT PANEL - FONT FAMILY
+
+const selectFontFamily = document.getElementById('select-font');
+
+const changeFontFamily = (e) => {
+  topText.style.fontFamily = e.target.value
+  bottomText.style.fontFamily = e.target.value
+}
+selectFontFamily.addEventListener('change', changeFontFamily);
 
 
+//TEXT PANEL - FONT SIZE
+const selectFontSize = document.getElementById('text-size-input');
+
+const changeFontSize = (e) => {
+  topText.style.fontSize = e.target.value + 'px';
+  bottomText.style.fontSize = e.target.value + 'px';
+}
+
+selectFontSize.addEventListener('input', changeFontSize);
 
 
-    // BOTON CERRAR
-    const buttonCloseImg = document.getElementById('button-close-editing-colum');
-    buttonCloseImg.addEventListener('click', function() {
-      buttonCloseImg
-      .parentElement
-      .parentElement
-      .classList
-      .toggle('hidden');
-    });
+//TEXT PANEL - TEXT ALIGN
 
-    const buttonCloseTxt = document.getElementById('button-close-editing-colum');
-    buttonCloseTxt.addEventListener('click', function() {
-      buttonCloseTxt
-      .parentElement
-      .parentElement
-      .classList
-      .toggle('hidden');
-    })
+const textLeftAlignButton = document.getElementById('left-align-button');
+const textCenterAlignButton = document.getElementById('center-align-button');
+const textRightAlignButton = document.getElementById('right-align-button');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-// boton de descarga
-const downloadButton = document.getElementById('download-button');
-const memeBox = document.getElementById('meme-box');
-
-function downloadMeme () {
-    console.log(domtoimage);
-    domtoimage.toBlob(memeBox).then(function (blob) {
-        saveAs(blob, 'my-meme.png');
+const alingTopText = (e) => {
+    if (e.target.id === 'left-align-button' || e.target.id === 'left-align-icon') {
+        topText.style.justifyContent = 'flex-start';
+        bottomText.style.justifyContent = 'flex-start';
+    } else if (e.target.id === 'center-align-button' || e.target.id === 'center-align-icon') {
+        topText.style.justifyContent = 'center';
+        bottomText.style.justifyContent = 'center';
+    } else if (e.target.id === 'right-align-button' || e.target.id === 'right-align-icon') {
+        topText.style.justifyContent = 'flex-end';
+        bottomText.style.justifyContent = 'flex-end';
     }
-    )
 
 }
 
-downloadButton.addEventListener('click', downloadMeme);
+textLeftAlignButton.addEventListener('click', alingTopText)
+textCenterAlignButton.addEventListener('click', alingTopText)
+textRightAlignButton.addEventListener('click', alingTopText)
+
+
+
+
+
+//TEXT PANEL - TEXT COLOR
+
+
+const textColor = document.getElementById('text-color');
+const textColorInput = document.getElementById('text-color-input');
+
+textColorInput.addEventListener('input', () => {
+    const valuetextColor = textColorInput.value;
+    topText.style.color = valuetextColor;
+    bottomText.style.color = valuetextColor;
+    textColor.innerHTML = valuetextColor.toUpperCase();
+});
+
+
+
+//TEXT PANEL - TEXT BACKGROUND COLOR
+
+
+const textBgColor = document.getElementById('background-color');
+const textBgColorInput = document.getElementById('image-background-color');
+
+textBgColorInput.addEventListener('input', () => {
+    const valuetextBgColor = textBgColorInput.value;
+    topText.style.backgroundColor = valuetextBgColor;
+    bottomText.style.backgroundColor = valuetextBgColor;
+    textBgColor.innerHTML = valuetextBgColor.toUpperCase();
+});
+
+
+//TEXT PANEL - BACKGROUND TRANSPARENT
+const noBgTextCheckbox = document.getElementById('transparent-text-background');
+
+noBgTextCheckbox.addEventListener('click', () => {
+    if (noBgTextCheckbox.checked) {
+        topText.style.backgroundColor = 'transparent';
+        bottomText.style.backgroundColor = 'transparent';
+    } else if (!noBgTextCheckbox.checked) {
+        topText.style.backgroundColor = textBgColorInput.value;
+        bottomText.style.backgroundColor = textBgColorInput.value;
+    }
+})
+
+
+//TEXT PANEL - OUTLINE
+const noOutlineButton = document.getElementById('no-outline-button');
+const lightOutlineButton = document.getElementById('light-outline-button');
+const darkOutlineButton = document.getElementById('dark-outline-button');
+
+const setOutline = (e) => {
+  console.log(e.target);
+  if (e.target.id === 'no-outline-button') {
+  topText.style.textShadow = 'none';
+  bottomText.style.textShadow = 'none';
+  } else if (e.target.id === 'light-outline-button') {
+    topText.style.textShadow = `2px 2px #FFF, -2px 2px #FFF, 2px -2px #FFF, -2px -2px #FFF`;
+    bottomText.style.textShadow = `2px 2px #FFF, -2px 2px #FFF, 2px -2px #FFF, -2px -2px #FFF`;
+} else if (e.target.id === 'dark-outline-button') {
+    topText.style.textShadow = `2px 2px #000, -2px 2px #000, 2px -2px #000, -2px -2px #000`;
+    bottomText.style.textShadow = `2px 2px #000, -2px 2px #000, 2px -2px #000, -2px -2px #000`;
+}
+}
+
+noOutlineButton.addEventListener('click', setOutline)
+lightOutlineButton.addEventListener('click', setOutline)
+darkOutlineButton.addEventListener('click', setOutline)
+
+
+//TEXT PANEL - PADDING
+const paddingInput = document.getElementById('input-padding');
+
+const setPadding = (e) => {
+    topText.style.padding = e.target.value + 'px';
+    bottomText.style.padding = e.target.value + 'px';
+}
+paddingInput.addEventListener('input', setPadding);
+
+
+//TEXT PANEL - LINE HEIGHT
+const lineHeightInput = document.getElementById('line-height-input');
+
+const setLineHeight = (e) => {
+    topText.style.lineHeight = e.target.value
+    bottomText.style.lineHeight = e.target.value
+}
+lineHeightInput.addEventListener('change', setLineHeight);
+
+
+

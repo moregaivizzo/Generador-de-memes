@@ -270,7 +270,7 @@ select {
     justify-content: space-between;
   }
   
-  .editing-control .control-column {
+.editing-control .control-column {
     width: calc(50% - 5px);
     margin-bottom: 0;
   }
@@ -371,7 +371,7 @@ select {
     
 }
 
-#meme-image {
+#image-meme {
     width: 100%;
     flex-grow: 1;
     background-size: cover;
