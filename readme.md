@@ -1,7 +1,6 @@
 # Generador de memes - Morena Gaivizzo
 
-## URL: [https://moregaivizzo.github.io/Generador-de-memes/]
-(https://moregaivizzo.github.io/Generador-de-memes/)
+## URL: [https://moregaivizzo.github.io/Generador-de-memes/](https://moregaivizzo.github.io/Generador-de-memes/)
 
 ## Descripción: 
 Este es mi segundo proyecto individual durante mi formación como Frontend Developer en ADA, aplicando todas las tecnologías y conocimientos adquiridos durante los dos primeros módulos ultilizando JavaScript por primera vez, además de seguir profundizando los conceptos de HTML5, CSS3 y Flex.
@@ -11,7 +10,7 @@ El trabajo realizado da como resultado un generador de memes el cual permite a l
 
 ## Tecnologías:
 - JavaScript
-    -DOM
+    - DOM
 - HTML 5
 - CSS3
 - FLEX
