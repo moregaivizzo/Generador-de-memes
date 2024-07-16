@@ -422,14 +422,34 @@ display: none;
 /* --------------------MEDIAS QUERYS----------------------- */
 
 @media (min-width: 1300px) {
+
+  body{
+    height: 100vh;
+  }
+
+  nav{
+    width: 60%;
+  }
+
+
   .image-editor-container {
     display: block;
     box-shadow: none;
   }
+
   .button-close-editing-column {
     display: none;
   }
 }
+
+
+@media (min-width: 900px) {
+
+  .panel {
+    max-width: 280px;
+  }
+}
+
 
 @media (max-width: 700px) {
   .main-title {
