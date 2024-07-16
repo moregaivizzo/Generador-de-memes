@@ -36,6 +36,7 @@ function downloadMeme () {
 downloadButton.addEventListener('click', downloadMeme);
 
 
+
     // // HIDDEN PANELS
     const inicializarPaneles = () => {
         document.getElementById('button-img').addEventListener('click', () => {
@@ -68,28 +69,6 @@ downloadButton.addEventListener('click', downloadMeme);
       }
 
     window.onload = inicializar 
-
-
-    // CLOSE PANEL BUTTON 
-    const botonCerrarImg = document.getElementById("button-close-editing-colum");
-    botonCerrarImg.addEventListener("click", function(){
-        botonCerrarImg
-            .parentElement
-            .parentElement
-            .classList
-            .toggle("hidden");
-    });
-    
-    
-    const botonCerrarTxt = document.getElementById("button-close-editing-colum");
-    botonCerrarTxt.addEventListener("click", function(){
-        botonCerrarTxt
-            .parentElement
-            .parentElement
-            .classList
-            .toggle("hidden");
-    });
-
 
 
 
@@ -251,14 +230,14 @@ const textRightAlignButton = document.getElementById('right-align-button');
 
 const alingTopText = (e) => {
     if (e.target.id === 'left-align-button' || e.target.id === 'left-align-icon') {
-        topText.style.justifyContent = 'flex-start';
-        bottomText.style.justifyContent = 'flex-start';
+        topText.style.textAlign= 'start';
+        bottomText.style.textAlign = 'start';
     } else if (e.target.id === 'center-align-button' || e.target.id === 'center-align-icon') {
-        topText.style.justifyContent = 'center';
-        bottomText.style.justifyContent = 'center';
+        topText.style.textAlign = 'center';
+        bottomText.style.textAlign = 'center';
     } else if (e.target.id === 'right-align-button' || e.target.id === 'right-align-icon') {
-        topText.style.justifyContent = 'flex-end';
-        bottomText.style.justifyContent = 'flex-end';
+        topText.style.textAlign = 'end';
+        bottomText.style.textAlign = 'end';
     }
 
 }

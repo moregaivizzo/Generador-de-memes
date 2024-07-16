@@ -43,49 +43,103 @@ body.light-theme {
 
 }
 
-.oculto {
-    display: none;
-}
+
 header {
 background-color: var(--color-header);
 }
 
 
+/* -----------------ESTRUCTURE------------------ */
+
 .meme-editing-container {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--color-background);
-    padding: 0 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-background);
+  padding: 0 20px;
 }
 
 .meme-box { 
-    width: 100%;
-    max-width: 610px;
-    height: 610px;
-    background-color: black;
-    position: relative;
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  max-width: 610px;
+  height: 610px;
+  background-color: black;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .image-editor-container {
-    width: 260px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    background-color: var(--color-aside);
-    padding: 30px 15px;
-    overflow: auto;
-    position: fixed;
-    top: 0;
-    right: 0;
-    box-shadow: -10px 10px 100px 5px rgba(0, 0, 0, 0.3);
-    z-index: 10;
-  }
+  width: 260px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: var(--color-aside);
+  padding: 30px 15px;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  right: 0;
+  box-shadow: -10px 10px 100px 5px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.main-title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 600;
+  margin: 10px;
+  letter-spacing: -1px;
+}
+
+.meme-text {
+  width: 100%;
+  background: white;
+  color: black;
+  text-align: center;
+  padding: 35px 50px;
+  font-size: 40px;
+  font-weight: bolder;
+  font-family: Impact;
+  
+}
+
+#image-meme {
+  width: 100%;
+  flex-grow: 1;
+  background-size: cover;
+}
+
+
+#download-button {
+  margin-top: 30px;
+  padding: 15px 15px;
+  height: auto;
+  background-color: #2e7d32;
+  color: white;
+}
+
+#download-button:hover,
+#download-button:focus {
+  background-color: #1b5e20;
+}
+
+
+.control-columns-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.control-columns-container .control-column {
+  width: calc(50% - 5px);
+  margin-bottom: 0;
+}
+
+
+/* LABELS AND INPUTS STYLE */
 
 label {
     display: block;
@@ -148,10 +202,9 @@ select {
     height: 2rem;
     background-color: var(--color-button-default);
     border-radius: 3px;
-    padding: 0.5rem 1rem;
 }
 
-/* -----------------------Buttons--------------------------- */
+/* -----------------------BUTTONS--------------------------- */
 
 
 .buttons-container {
@@ -244,6 +297,22 @@ select {
     width: 10rem;
     height: 2rem;
     cursor: pointer;
+}
+
+.buttons-alignment {
+  width: calc(50% - 2.5px);
+  justify-content: space-between;
+  margin-left: 2.5px;
+}
+
+.buttons-alignment .button {
+  margin: 0;
+  width: calc(100% / 3 - 10px / 3);
+  min-width: 0;
+}
+
+.oculto {
+display: none;
 }
 
 /* ----------------------ASIDE CONTROL--------------------------- */
@@ -349,75 +418,8 @@ select {
     font-size: 1rem;
 }
 
-/* -----------------ESTRUCTURA------------------ */
 
-.main-title {
-    text-align: center;
-    font-size: 36px;
-    font-weight: 600;
-    margin: 10px;
-    letter-spacing: -1px;
-}
-
-.meme-text {
-    width: 100%;
-    background: white;
-    color: black;
-    text-align: center;
-    padding: 35px 50px;
-    font-size: 40px;
-    font-weight: bolder;
-    font-family: Impact;
-    
-}
-
-#image-meme {
-    width: 100%;
-    flex-grow: 1;
-    background-size: cover;
-  }
-
-
-  #download-button {
-    margin-top: 30px;
-    padding: 15px 15px;
-    height: auto;
-    background-color: #2e7d32;
-    color: white;
-  }
-  
-  #download-button:hover,
-  #download-button:focus {
-    background-color: #1b5e20;
-  }
-
-
-.control-columns-container {
-    display: flex;
-    justify-content: space-between;
-}
-
-.control-columns-container .control-column {
-    width: calc(50% - 5px);
-    margin-bottom: 0;
-  }
-
-
-
-.buttons-alignment {
-    width: calc(50% - 2.5px);
-    justify-content: space-between;
-    margin-left: 2.5px;
-}
-
-.buttons-alignment .button {
-    margin: 0;
-    width: calc(100% / 3 - 10px / 3);
-    min-width: 0;
-}
-
-
-/* --------------------medias querys----------------------- */
+/* --------------------MEDIAS QUERYS----------------------- */
 
 @media (min-width: 1300px) {
   .image-editor-container {

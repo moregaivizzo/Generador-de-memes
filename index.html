@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Editor de memes">
+    <meta name="keywords" content="meme, memes, editor-de-memes, javascript">
+    <meta name="author" content="Morena Gaivizzo">
     <title>Editor de memes</title>
     <link rel="stylesheet" href="style.css">
-    <!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> -->
+
+    <!-- box icons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- dom to image -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js" integrity="sha512-01CJ9/g7e8cUmY0DFTMcUw/ikS799FHiOA0eyHsUWfOetgbx/t6oV4otQ5zXKQyIrQGTHSmRVPIgrgLcZi/WMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -21,19 +25,19 @@
         <h1 class="main-title">Generador de memes</h1>
 
         <div class="buttons-container panel-buttons">
-            <button class="button button-text" id="button-img">
+            <button class="button button-text" id="button-img" aria-label="Open image panel button">
                 <i class='bx bxs-file-image text-button-icon'> Imagen</i>
             </button>
             
-            <button class="button button-text" id="button-text">
+            <button class="button button-text" id="button-text" aria-label="Open text panel button">
                 <i class='bx bx-text text-button-icon'> Texto</i>
             </button>
 
-            <button class="button button-text button-theme button-theme-dark" id="dark-mode-button">
+            <button class="button button-text button-theme button-theme-dark" id="dark-mode-button" aria-label="Select dark theme button">
                 <i class='bx bx-bulb text-button-icon'> Modo oscuro</i>
             </button>
 
-            <button class="button button-text button-theme button-theme-light" id="light-mode-button">
+            <button class="button button-text button-theme button-theme-light" id="light-mode-button" aria-label="Select light theme button">
                 <i class='bx bxs-bulb text-button-icon'> Modo claro</i>
             </button>
 
@@ -53,7 +57,7 @@
         
         </div>
 
-        <button class="button button-text" id="download-button"> 
+        <button class="button button-text" id="download-button" aria-label="download-meme-button"> 
             <i class='bx bxs-download'> Descargar meme</i>
         </button>
     </main>
@@ -62,7 +66,7 @@
     <!-- ASIDE SECTION -->
 <aside class="image-editor-container oculto" id="image-editor-container">
 
-    <button class="button-close-editing-column" id="button-close-editing-colum"> 
+    <button class="button-close-editing-column" id="button-close-editing-colum" aria-label="button-close-panel"> 
         <i class='bx bx-x button-close'></i>
     </button>
 
@@ -90,12 +94,12 @@
 
             <div class="control-column">
                 <select name="select" class="select-option" id="select-option">
-                    <option value="value1">Ninguno</option>
-                    <option value="value2">Aclarar</option>
-                    <option value="value3">Oscurecer</option>
-                    <option value="value4">Diferencia</option>
-                    <option value="value5">Luminosidad</option>
-                    <option value="value6">Multiplicar</option>
+                    <option value="unset">Ninguno</option>
+                    <option value="lighten">Aclarar</option>
+                    <option value="darken">Oscurecer</option>
+                    <option value="difference">Diferencia</option>
+                    <option value="luminosity">Luminosidad</option>
+                    <option value="multiply">Multiplicar</option>
                 </select>
             </div>
 
@@ -242,15 +246,15 @@
 
         <!-- TEXT PANEL - TEXT ALIGN -->
         <div class="buttons-container buttons-alignment">
-            <button class="button default-button" id="left-align-button"> 
+            <button class="button default-button" id="left-align-button" aria-label="align text to the left"> 
             <i class='bx bx-align-left' id="left-align-icon"></i>
             </button>
 
-            <button class="button default-button" id="center-align-button">
+            <button class="button default-button" id="center-align-button"  aria-label="align text to center">
                 <i class='bx bx-align-middle' id="center-align-icon"></i>
             </button>
 
-            <button class="button default-button" id="right-align-button">
+            <button class="button default-button" id="right-align-button"  aria-label="align text to the right">
                 <i class='bx bx-align-right' id="right-align-icon" ></i>
             </button>
         </div>
