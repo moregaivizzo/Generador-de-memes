@@ -49,43 +49,7 @@ background-color: var(--color-header);
 }
 
 
-/* -----------------ESTRUCTURE------------------ */
-
-.meme-editing-container {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--color-background);
-  padding: 0 20px;
-}
-
-.meme-box { 
-  width: 90%;
-  max-width: 600px;
-  height: 500px;
-  background-color: black;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
-
-.image-editor-container {
-  width: 260px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  background-color: var(--color-aside);
-  padding: 30px 15px;
-  overflow: auto;
-  position: fixed;
-  top: 0;
-  right: 0;
-  box-shadow: -10px 10px 100px 5px rgba(0, 0, 0, 0.3);
-  z-index: 10;
-}
+/* -----------------ESTRUCTURA------------------ */
 
 .main-title {
   text-align: center;
@@ -97,7 +61,6 @@ background-color: var(--color-header);
 
 .meme-text {
   width: 100%;
-  height: 80px;
   background: white;
   color: black;
   text-align: center;
@@ -129,18 +92,43 @@ background-color: var(--color-header);
 }
 
 
-.control-columns-container {
-  display: flex;
-  justify-content: space-between;
+.meme-editing-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-background);
+    padding: 0 20px;
 }
 
-.control-columns-container .control-column {
-  width: calc(50% - 5px);
-  margin-bottom: 0;
+.meme-box { 
+    width: 100%;
+    max-width: 610px;
+    height: 610px;
+    background-color: black;
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
+.image-editor-container {
+    width: 260px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: var(--color-aside);
+    padding: 30px 15px;
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    right: 0;
+    box-shadow: -10px 10px 100px 5px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+  }
 
-/* LABELS AND INPUTS STYLE */
+
 
 label {
     display: block;
@@ -205,7 +193,7 @@ select {
     border-radius: 3px;
 }
 
-/* -----------------------BUTTONS--------------------------- */
+/* -----------------------Buttons--------------------------- */
 
 
 .buttons-container {
@@ -300,22 +288,6 @@ select {
     cursor: pointer;
 }
 
-.buttons-alignment {
-  width: calc(50% - 2.5px);
-  justify-content: space-between;
-  margin-left: 2.5px;
-}
-
-.buttons-alignment .button {
-  margin: 0;
-  width: calc(100% / 3 - 10px / 3);
-  min-width: 0;
-}
-
-.oculto {
-display: none;
-}
-
 /* ----------------------ASIDE CONTROL--------------------------- */
 
 .panel-title {
@@ -373,7 +345,6 @@ display: none;
   }
 
 
-
   .edit-control-color {
     position: relative;
     height: 36px;
@@ -420,37 +391,45 @@ display: none;
 }
 
 
-/* --------------------MEDIAS QUERYS----------------------- */
+.control-columns-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.control-columns-container .control-column {
+    width: calc(50% - 5px);
+    margin-bottom: 0;
+  }
+
+
+
+.buttons-alignment {
+    width: calc(50% - 2.5px);
+    justify-content: space-between;
+    margin-left: 2.5px;
+}
+
+.buttons-alignment .button {
+    margin: 0;
+    width: calc(100% / 3 - 10px / 3);
+    min-width: 0;
+}
+
+.oculto {
+  display: none;
+}
+
+/* --------------------medias querys----------------------- */
 
 @media (min-width: 1300px) {
-
-  body{
-    height: 100vh;
-  }
-
-  nav{
-    width: 60%;
-  }
-
-
   .image-editor-container {
     display: block;
     box-shadow: none;
   }
-
   .button-close-editing-column {
     display: none;
   }
 }
-
-
-@media (min-width: 900px) {
-
-  .panel {
-    max-width: 280px;
-  }
-}
-
 
 @media (max-width: 700px) {
   .main-title {

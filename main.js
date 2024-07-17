@@ -1,5 +1,6 @@
 // DARK AND LIGHT THEME
-const inicializarTemas = () => {
+
+  const inicializarTemas = () => {
     document.getElementById('dark-mode-button').addEventListener('click', cambiarModoClaro)
     document.getElementById('light-mode-button').addEventListener('click', cambiarModoOscuro)
     }
@@ -17,12 +18,24 @@ const inicializarTemas = () => {
     const inicializar = () => {
     inicializarTemas()
     inicializarPaneles()
+    setPadding()
+    changeFontSize()
+    ajustarImagen()
     }
+
+    //RESIZE
+
+  const ajustarImagen = () => {
+  document.getElementById('meme-box').style.height = `${
+    document.getElementById('meme-box').getBoundingClientRect().width
+  }px`
+}
 
 
     // DOWLAND BUTTON
-const downloadButton = document.getElementById('download-button');
-const memeBox = document.getElementById('meme-box');
+
+  const downloadButton = document.getElementById('download-button');
+  const memeBox = document.getElementById('meme-box');
 
 function downloadMeme () {
     console.log(domtoimage);
@@ -37,7 +50,8 @@ downloadButton.addEventListener('click', downloadMeme);
 
 
 
-    // // HIDDEN PANELS
+    // HIDDEN PANELS
+    
     const inicializarPaneles = () => {
         document.getElementById('button-img').addEventListener('click', () => {
           mostrarPanelImagen()
@@ -77,7 +91,7 @@ downloadButton.addEventListener('click', downloadMeme);
   const imageMeme = document.getElementById('image-meme');
   const imageUrl = document.getElementById('image-url');
 
-  imageUrl.addEventListener('keyup', () => {
+  imageUrl.addEventListener('input', () => {
     imageMeme.style.backgroundImage = `url(${imageUrl.value.trim()})`;
   })
 
@@ -122,6 +136,8 @@ hue.addEventListener('change', applyFilters)
 saturate.addEventListener('change', applyFilters)
 invert.addEventListener('change', applyFilters)
 
+window.addEventListener('resize', ajustarImagen)
+
 function applyFilters () {
   imageMeme.style.filter = `brightness(${brightness.value}) 
   opacity(${opacity.value}) 
@@ -157,6 +173,7 @@ resetFiltersBtn.addEventListener('click', resetFilters);
 
 
 //TEXT PANEL - TOP TEXT
+
 const topText = document.getElementById('box-text-top');
 const topTextInput = document.getElementById('top-text-input');
 const topTextCheckbox = document.getElementById('no-top-text-checkbox');
@@ -179,6 +196,7 @@ topTextCheckbox.addEventListener('click', () => {
 
 
 //TEXT PANEL - BOTTOM TEXT
+
 const bottomText = document.getElementById('box-text-bottom');
 const bottomTextInput = document.getElementById('bottom-text-input');
 const bottomTextCheckbox = document.getElementById('no-bottom-text-checkbox');
@@ -212,14 +230,24 @@ selectFontFamily.addEventListener('change', changeFontFamily);
 
 
 //TEXT PANEL - FONT SIZE
+
 const selectFontSize = document.getElementById('text-size-input');
 
-const changeFontSize = (e) => {
-  topText.style.fontSize = e.target.value + 'px';
-  bottomText.style.fontSize = e.target.value + 'px';
+const changeFontSize = () => {
+  fontValue = document.getElementById('text-size-input').value;
+
+  if (window.innerWidth < 1100) {
+    fontValue = Math.round((window.innerWidth / 10) * 0.5);
+
+    document.getElementById('text-size-input').value = fontValue;
+  }
+
+  topText.style.fontSize = fontValue + 'px';
+  bottomText.style.fontSize = fontValue + 'px';
 }
 
 selectFontSize.addEventListener('input', changeFontSize);
+window.addEventListener('resize', changeFontSize);
 
 
 //TEXT PANEL - TEXT ALIGN
@@ -252,7 +280,6 @@ textRightAlignButton.addEventListener('click', alingTopText)
 
 //TEXT PANEL - TEXT COLOR
 
-
 const textColor = document.getElementById('text-color');
 const textColorInput = document.getElementById('text-color-input');
 
@@ -267,7 +294,6 @@ textColorInput.addEventListener('input', () => {
 
 //TEXT PANEL - TEXT BACKGROUND COLOR
 
-
 const textBgColor = document.getElementById('background-color');
 const textBgColorInput = document.getElementById('image-background-color');
 
@@ -280,6 +306,7 @@ textBgColorInput.addEventListener('input', () => {
 
 
 //TEXT PANEL - BACKGROUND TRANSPARENT
+
 const noBgTextCheckbox = document.getElementById('transparent-text-background');
 
 noBgTextCheckbox.addEventListener('click', () => {
@@ -294,6 +321,7 @@ noBgTextCheckbox.addEventListener('click', () => {
 
 
 //TEXT PANEL - OUTLINE
+
 const noOutlineButton = document.getElementById('no-outline-button');
 const lightOutlineButton = document.getElementById('light-outline-button');
 const darkOutlineButton = document.getElementById('dark-outline-button');
@@ -318,21 +346,35 @@ darkOutlineButton.addEventListener('click', setOutline)
 
 
 //TEXT PANEL - PADDING
+
 const paddingInput = document.getElementById('input-padding');
 
-const setPadding = (e) => {
-    topText.style.padding = e.target.value + 'px';
-    bottomText.style.padding = e.target.value + 'px';
+const setPadding = () => {
+  paddingValue = document.getElementById('input-padding').value;
+  if (window.innerWidth < 1100) {
+
+    paddingValue = Math.round((window.innerWidth / 10) * 0.2);
+    document.getElementById('input-padding').value = paddingValue;
+  }
+
+    topText.style.padding = paddingValue + 'px';
+    bottomText.style.padding = paddingValue + 'px';
+  
 }
 paddingInput.addEventListener('input', setPadding);
+window.addEventListener('resize', setPadding);
 
 
 //TEXT PANEL - LINE HEIGHT
+
 const lineHeightInput = document.getElementById('line-height-input');
 
-const setLineHeight = (e) => {
-    topText.style.lineHeight = e.target.value
-    bottomText.style.lineHeight = e.target.value
+const setLineHeight = () => {
+  lineHeightValue =  document.getElementById('line-height-input').value;
+
+    topText.style.lineHeight = lineHeightValue
+    bottomText.style.lineHeight = lineHeightValue
+
 }
 lineHeightInput.addEventListener('change', setLineHeight);
 
